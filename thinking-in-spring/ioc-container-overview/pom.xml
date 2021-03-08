@@ -6,6 +6,7 @@
         <artifactId>thinking-in-spring</artifactId>
         <groupId>org.geekbang</groupId>
         <version>1.0-SNAPSHOT</version>
+        <!-- 解决依赖顺序的问题-->
         <relativePath>../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>

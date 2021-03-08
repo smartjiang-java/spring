@@ -22,7 +22,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * 超级
+ * 超级，创建这个注解
  *
  * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
  * @since

@@ -50,6 +50,9 @@ public class NoUniqueBeanDefinitionExceptionDemo {
         applicationContext.close();
     }
 
+    /**
+     * 当没有显示的写出Bean名称，方法名就是bean名称
+     */
     @Bean
     public String bean1() {
         return "1";

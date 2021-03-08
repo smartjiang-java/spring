@@ -36,7 +36,7 @@ public class BeanInitializationDemo {
         // 创建 BeanFactory 容器
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
         // 注册 Configuration Class（配置类）
-        applicationContext.register(BeanInitializationDemo.class);
+        //applicationContext.register(BeanInitializationDemo.class);
         // 启动 Spring 应用上下文
         applicationContext.refresh();
         // 非延迟初始化在 Spring 应用上下文启动完成后，被初始化

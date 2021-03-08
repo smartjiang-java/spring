@@ -14,8 +14,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.geekbang.thinking.in.spring.ioc.dependency.injection;
+package org.geekbang.thinking.in.spring.ioc.dependency.injection.constructor;
 
+import org.geekbang.thinking.in.spring.ioc.dependency.injection.UserHolder;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
@@ -59,7 +60,6 @@ public class ApiDependencyConstructorInjectionDemo {
     /**
      * 为 {@link UserHolder} 生成 {@link BeanDefinition}
      *
-     * @return
      */
     private static BeanDefinition createUserHolderBeanDefinition() {
         BeanDefinitionBuilder definitionBuilder = BeanDefinitionBuilder.genericBeanDefinition(UserHolder.class);
@@ -67,10 +67,4 @@ public class ApiDependencyConstructorInjectionDemo {
         return definitionBuilder.getBeanDefinition();
     }
 
-//    @Bean
-//    public UserHolder userHolder(User user) { // superUser -> primary = true
-//        UserHolder userHolder = new UserHolder();
-//        userHolder.setUser(user);
-//        return userHolder;
-//    }
 }

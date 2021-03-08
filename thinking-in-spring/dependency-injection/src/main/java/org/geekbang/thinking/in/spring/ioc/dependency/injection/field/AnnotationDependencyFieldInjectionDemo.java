@@ -14,48 +14,41 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.geekbang.thinking.in.spring.ioc.dependency.injection;
+package org.geekbang.thinking.in.spring.ioc.dependency.injection.field;
 
+import org.geekbang.thinking.in.spring.ioc.dependency.injection.UserHolder;
 import org.geekbang.thinking.in.spring.ioc.overview.domain.User;
-import org.springframework.beans.factory.ObjectFactory;
-import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Bean;
 
-import java.util.Set;
+import javax.annotation.Resource;
 
 /**
- * {@link ObjectProvider} 实现延迟依赖注入
+ * 基于 Java 注解的依赖字段注入示例
  *
  * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
- * @see Qualifier
  * @since
  */
-@Configuration
-public class LazyAnnotationDependencyInjectionDemo {
+public class AnnotationDependencyFieldInjectionDemo {
 
     @Autowired
-    @Qualifier("user")
-    private User user; // 实时注入
+    private
+//    static // @Autowired 会忽略掉静态字段
+    UserHolder userHolder;
 
-    @Autowired
-    private ObjectProvider<User> userObjectProvider; // 延迟注入
-
-    @Autowired
-    private ObjectFactory<Set<User>> usersObjectFactory;
+    @Resource
+    private   UserHolder userHolder2;
 
     public static void main(String[] args) {
 
         // 创建 BeanFactory 容器
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext();
         // 注册 Configuration Class（配置类） -> Spring Bean
-        applicationContext.register(LazyAnnotationDependencyInjectionDemo.class);
+        applicationContext.register(AnnotationDependencyFieldInjectionDemo.class);
 
         XmlBeanDefinitionReader beanDefinitionReader = new XmlBeanDefinitionReader(applicationContext);
-
         String xmlResourcePath = "classpath:/META-INF/dependency-lookup-context.xml";
         // 加载 XML 资源，解析并且生成 BeanDefinition
         beanDefinitionReader.loadBeanDefinitions(xmlResourcePath);
@@ -63,21 +56,22 @@ public class LazyAnnotationDependencyInjectionDemo {
         // 启动 Spring 应用上下文
         applicationContext.refresh();
 
-        // 依赖查找 QualifierAnnotationDependencyInjectionDemo Bean
-        LazyAnnotationDependencyInjectionDemo demo = applicationContext.getBean(LazyAnnotationDependencyInjectionDemo.class);
+        // 依赖查找 AnnotationDependencyFieldInjectionDemo Bean
+        AnnotationDependencyFieldInjectionDemo demo = applicationContext.getBean(AnnotationDependencyFieldInjectionDemo.class);
 
-        // 期待输出 superUser Bean
-        System.out.println("demo.user = " + demo.user);
-        // 期待输出 superUser Bean
-        System.out.println("demo.userObjectProvider = " + demo.userObjectProvider.getObject()); // 继承 ObjectFactory
-        // 期待输出 superUser user Beans
-        System.out.println("demo.usersObjectFactory = " + demo.usersObjectFactory.getObject());
-
-        demo.userObjectProvider.forEach(System.out::println);
-
+        // @Autowired 字段关联
+        UserHolder userHolder = demo.userHolder;
+        System.out.println(userHolder);
+        System.out.println(demo.userHolder2);
+        System.out.println(userHolder == demo.userHolder2);
 
         // 显示地关闭 Spring 应用上下文
         applicationContext.close();
     }
 
+    //这里将UserHolder这个Bean进行注册
+    @Bean
+    public UserHolder userHolder(User user) {
+        return new UserHolder(user);
+    }
 }

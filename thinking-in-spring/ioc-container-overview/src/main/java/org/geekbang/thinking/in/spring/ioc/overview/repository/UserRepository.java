@@ -16,6 +16,7 @@
  */
 package org.geekbang.thinking.in.spring.ioc.overview.repository;
 
+import lombok.Data;
 import org.geekbang.thinking.in.spring.ioc.overview.domain.User;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.ObjectFactory;
@@ -29,36 +30,19 @@ import java.util.Collection;
  * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
  * @since
  */
+@Data
 public class UserRepository {
 
-    private Collection<User> users; // 自定义 Bean
+    /**
+     * 自定义 Bean
+     */
+    private Collection<User> users;
 
-    private BeanFactory beanFactory; // 內建非 Bean 对象（依赖）
+    /**
+     * 内建非bean对象（依赖）
+     */
+    private BeanFactory beanFactory;
 
     private ObjectFactory<ApplicationContext> objectFactory;
 
-    public Collection<User> getUsers() {
-        return users;
-    }
-
-    public void setUsers(Collection<User> users) {
-        this.users = users;
-    }
-
-
-    public void setBeanFactory(BeanFactory beanFactory) {
-        this.beanFactory = beanFactory;
-    }
-
-    public BeanFactory getBeanFactory() {
-        return beanFactory;
-    }
-
-    public ObjectFactory<ApplicationContext> getObjectFactory() {
-        return objectFactory;
-    }
-
-    public void setObjectFactory(ObjectFactory<ApplicationContext> objectFactory) {
-        this.objectFactory = objectFactory;
-    }
 }

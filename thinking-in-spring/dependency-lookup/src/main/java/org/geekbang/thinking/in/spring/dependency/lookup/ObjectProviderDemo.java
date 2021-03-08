@@ -65,7 +65,8 @@ public class ObjectProviderDemo { // @Configuration 是非必须注解
 
     @Bean
     @Primary
-    public String helloWorld() { // 方法名就是 Bean 名称 = "helloWorld"
+    public String helloWorld() {
+        // 方法名就是 Bean 名称 = "helloWorld"
         return "Hello,World";
     }
 
@@ -74,6 +75,9 @@ public class ObjectProviderDemo { // @Configuration 是非必须注解
         return "Message";
     }
 
+    /**
+     * 根据bean类型延迟加载
+     */
     private static void lookupByObjectProvider(AnnotationConfigApplicationContext applicationContext) {
         ObjectProvider<String> objectProvider = applicationContext.getBeanProvider(String.class);
         System.out.println(objectProvider.getObject());

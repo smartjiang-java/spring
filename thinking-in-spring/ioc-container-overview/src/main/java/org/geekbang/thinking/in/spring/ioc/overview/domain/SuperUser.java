@@ -16,6 +16,7 @@
  */
 package org.geekbang.thinking.in.spring.ioc.overview.domain;
 
+import lombok.Data;
 import org.geekbang.thinking.in.spring.ioc.overview.annotation.Super;
 
 /**
@@ -24,23 +25,16 @@ import org.geekbang.thinking.in.spring.ioc.overview.annotation.Super;
  * @author <a href="mailto:mercyblitz@gmail.com">Mercy</a>
  * @since
  */
+@Data
 @Super
 public class SuperUser extends User {
 
     private String address;
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
     @Override
     public String toString() {
         return "SuperUser{" +
                 "address='" + address + '\'' +
                 "} " + super.toString();
     }
+
 }

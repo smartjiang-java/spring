@@ -29,4 +29,8 @@ public interface UserFactory {
     default User createUser() {
         return User.createUser();
     }
+
+    void initUserFactory();
+
+    void doDestroy();
 }

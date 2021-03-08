@@ -6,16 +6,14 @@
         <artifactId>thinking-in-spring</artifactId>
         <groupId>org.geekbang</groupId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>generic</artifactId>
+    <artifactId>java-beans-demo</artifactId>
 
     <properties>
-        <!--   spring-webflux在spring5.0以后出现-->
-          <spring.version>4.3.26.RELEASE</spring.version>
-<!--        <spring.version>5.2.2.RELEASE</spring.version>-->
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
     </properties>
 
 </project>

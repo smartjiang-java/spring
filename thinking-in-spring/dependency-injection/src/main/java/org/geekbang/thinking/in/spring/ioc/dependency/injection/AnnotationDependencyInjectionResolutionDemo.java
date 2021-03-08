@@ -19,8 +19,6 @@ package org.geekbang.thinking.in.spring.ioc.dependency.injection;
 import org.geekbang.thinking.in.spring.ioc.dependency.injection.annotation.InjectedUser;
 import org.geekbang.thinking.in.spring.ioc.dependency.injection.annotation.MyAutowired;
 import org.geekbang.thinking.in.spring.ioc.overview.domain.User;
-import org.springframework.beans.factory.ObjectFactory;
-import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -30,11 +28,7 @@ import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 
 import javax.inject.Inject;
-import java.lang.annotation.Annotation;
 import java.util.*;
-
-import static java.util.Arrays.asList;
-import static org.springframework.context.annotation.AnnotationConfigUtils.AUTOWIRED_ANNOTATION_PROCESSOR_BEAN_NAME;
 
 /**
  * 注解驱动的依赖注入处理过程
