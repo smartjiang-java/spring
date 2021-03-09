@@ -39,7 +39,6 @@ public class QualifierAnnotationDependencyInjectionDemo {
 
     @Autowired
     private User user; // superUser -> primary =true
-
     @Autowired
     @Qualifier("user") // 指定 Bean 名称或 ID
     private User namedUser;

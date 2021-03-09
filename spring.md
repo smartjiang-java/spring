@@ -605,27 +605,71 @@ Bean 垃圾回收（GC）
 7. 字段注入
 手动模式
    • Java 注解配置元信息
-      • @Autowired:会忽略掉静态字段,默认byType注入
+      • @Autowired:会忽略掉静态字段,默认byType注入,在字段上使用走构造器而不是set方法
       • @Resource:默认byName注入
       • @Inject（可选）
+```java
+    @Autowired
+    private UserHolder userHolder;
+    @Resource
+    private  UserHolder userHolder2;
+```
    
 8. 方法注入
-   
+手动模式:底层都是java反射
+   • Java 注解配置元信息
+     • @Autowired
+     • @Resource
+     • @Inject（可选）
+     • @Bean:用来把BeanDefinition注入到容器中.其他的是把对应的SpringBean注入到参数中.
+```java
+    private UserHolder userHolder;
+    private UserHolder userHolder2;
+    @Autowired
+    public void init1(UserHolder userHolder) {
+        this.userHolder = userHolder;
+    }
+    @Resource
+    public void init2(UserHolder userHolder2) {
+        this.userHolder2 = userHolder2;
+    }
 
-9. 回调注入
+@Bean
+public UserHolder userHolder(User user) {
+        UserHolder userHolder = new UserHolder();
+        userHolder.setUser(user);
+        return userHolder;
+        }
+```
    
+9. 回调注入：实现接口
+   内嵌：暂时无法扩展
+   ![binaryTree](image/接口回调.png "binaryTree")
+   ![binaryTree](image/接口回调续.png "binaryTree")
 
 10. 依赖注入类型选择
+    • 低依赖：强制依赖注入，构造器注入，参数过多就比较复杂
+    • 多依赖：Setter 方法注入，注入时机的先后顺序不定
+    • 便利性：字段注入
+    • 声明类：方法注入，组合注入
     
-
 11. 基础类型注入
+    • 原生类型（Primitive）：boolean、byte、char、short、int、float、long、double
+    • 标量类型（Scalar）：Number、Character、Boolean、Enum、Locale、Charset、Currency、 Properties、UUID
+    • 常规类型（General）：Object、String、TimeZone、Calendar、Optional 等 
+    • Spring 类型：Resource、InputSource、Formatter 等
     
-
 12. 集合类型注入
+    • 数组类型（Array）：原生类型、标量类型、常规类型、Spring 类型
+    • 集合类型（Collection） • Collection：List、Set（SortedSet、NavigableSet、EnumSet） 
+                           • Map：Properties,Map
     
-
 13. 限定注入
-    
+ 使用注解 @Qualifier 限定
+    • 通过 Bean 名称限定
+    • 通过分组限定
+ 基于注解 @Qualifier 扩展限定
+    • 自定义注解 - 如 Spring Cloud @LoadBalanced
 
 14. 延迟依赖注入
     

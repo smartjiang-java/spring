@@ -14,8 +14,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.geekbang.thinking.in.spring.ioc.dependency.injection;
+package org.geekbang.thinking.in.spring.ioc.dependency.injection.method;
 
+import org.geekbang.thinking.in.spring.ioc.dependency.injection.UserHolder;
 import org.geekbang.thinking.in.spring.ioc.overview.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
@@ -59,7 +60,6 @@ public class AnnotationDependencyMethodInjectionDemo {
         applicationContext.register(AnnotationDependencyMethodInjectionDemo.class);
 
         XmlBeanDefinitionReader beanDefinitionReader = new XmlBeanDefinitionReader(applicationContext);
-
         String xmlResourcePath = "classpath:/META-INF/dependency-lookup-context.xml";
         // 加载 XML 资源，解析并且生成 BeanDefinition
         beanDefinitionReader.loadBeanDefinitions(xmlResourcePath);
@@ -76,7 +76,6 @@ public class AnnotationDependencyMethodInjectionDemo {
         System.out.println(demo.userHolder2);
 
         System.out.println(userHolder == demo.userHolder2);
-
 
         // 显示地关闭 Spring 应用上下文
         applicationContext.close();

@@ -152,23 +152,23 @@ public class BeanScopeDemo implements DisposableBean {
 
     @Override
     public void destroy() throws Exception {
-
-        System.out.println("当前 BeanScopeDemo Bean 正在销毁中...");
-
-        this.prototypeUser.destroy();
-        this.prototypeUser1.destroy();
-        this.prototypeUser1.destroy();
-        this.prototypeUser2.destroy();
-        // 获取 BeanDefinition
-        for (Map.Entry<String, User> entry : this.users.entrySet()) {
-            String beanName = entry.getKey();
-            BeanDefinition beanDefinition = beanFactory.getBeanDefinition(beanName);
-            if (beanDefinition.isPrototype()) { // 如果当前 Bean 是 prototype scope
-                User user = entry.getValue();
-                user.destroy();
-            }
-        }
-
-        System.out.println("当前 BeanScopeDemo Bean 销毁完成");
+//
+//        System.out.println("当前 BeanScopeDemo Bean 正在销毁中...");
+//
+//        this.prototypeUser.destroy();
+//        this.prototypeUser1.destroy();
+//        this.prototypeUser1.destroy();
+//        this.prototypeUser2.destroy();
+//        // 获取 BeanDefinition
+//        for (Map.Entry<String, User> entry : this.users.entrySet()) {
+//            String beanName = entry.getKey();
+//            BeanDefinition beanDefinition = beanFactory.getBeanDefinition(beanName);
+//            if (beanDefinition.isPrototype()) { // 如果当前 Bean 是 prototype scope
+//                User user = entry.getValue();
+//                user.destroy();
+//            }
+//        }
+//
+//        System.out.println("当前 BeanScopeDemo Bean 销毁完成");
     }
 }

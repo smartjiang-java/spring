@@ -33,10 +33,10 @@ import javax.annotation.Resource;
  */
 public class AnnotationDependencyFieldInjectionDemo {
 
-    @Autowired
+    @Resource
     private
 //    static // @Autowired 会忽略掉静态字段
-    UserHolder userHolder;
+     UserHolder userHolder;
 
     @Resource
     private   UserHolder userHolder2;

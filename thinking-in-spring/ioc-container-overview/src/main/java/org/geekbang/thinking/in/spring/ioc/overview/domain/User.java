@@ -17,6 +17,11 @@
 package org.geekbang.thinking.in.spring.ioc.overview.domain;
 
 import lombok.Data;
+import org.geekbang.thinking.in.spring.ioc.overview.enums.City;
+import org.springframework.core.io.Resource;
+
+import java.util.List;
+
 /**
  * 用户类
  *
@@ -29,6 +34,17 @@ public class User {
     private Long id;
 
     private String name;
+
+    private City city;
+
+    private Resource configFileLocation;
+
+    /**
+     * ElementType
+     */
+    private City[] citys;
+
+    private List<City> lifeCitys;
 
     public static User createUser(){
         return  new User();

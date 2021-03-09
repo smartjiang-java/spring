@@ -21,6 +21,7 @@ import org.geekbang.thinking.in.spring.ioc.overview.domain.User;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.ListableBeanFactory;
 import org.springframework.beans.factory.ObjectFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.util.Map;
@@ -33,6 +34,7 @@ import java.util.Map;
  * @since
  */
 public class DependencyLookupDemo {
+
 
     public static void main(String[] args) {
         // 配置 XML 配置文件
