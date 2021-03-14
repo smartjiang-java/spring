@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.geekbang.thinking.in.spring.ioc.dependency.injection;
+package org.geekbang.thinking.in.spring.ioc.dependency.injection.lazy;
 
 import org.geekbang.thinking.in.spring.ioc.overview.domain.User;
 import org.springframework.beans.factory.ObjectFactory;
@@ -55,7 +55,6 @@ public class LazyAnnotationDependencyInjectionDemo {
         applicationContext.register(LazyAnnotationDependencyInjectionDemo.class);
 
         XmlBeanDefinitionReader beanDefinitionReader = new XmlBeanDefinitionReader(applicationContext);
-
         String xmlResourcePath = "classpath:/META-INF/dependency-lookup-context.xml";
         // 加载 XML 资源，解析并且生成 BeanDefinition
         beanDefinitionReader.loadBeanDefinitions(xmlResourcePath);
@@ -68,13 +67,16 @@ public class LazyAnnotationDependencyInjectionDemo {
 
         // 期待输出 superUser Bean
         System.out.println("demo.user = " + demo.user);
-        // 期待输出 superUser Bean
+        // 期待输出 superUser Bean,单一的
         System.out.println("demo.userObjectProvider = " + demo.userObjectProvider.getObject()); // 继承 ObjectFactory
-        // 期待输出 superUser user Beans
-        System.out.println("demo.usersObjectFactory = " + demo.usersObjectFactory.getObject());
-
+        //集合的
+        for (User user : demo.userObjectProvider) {
+            System.out.println(user);
+        }
         demo.userObjectProvider.forEach(System.out::println);
 
+        // 期待输出 superUser user Beans
+        System.out.println("demo.usersObjectFactory = " + demo.usersObjectFactory.getObject());
 
         // 显示地关闭 Spring 应用上下文
         applicationContext.close();

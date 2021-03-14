@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.geekbang.thinking.in.spring.ioc.dependency.injection;
+package org.geekbang.thinking.in.spring.ioc.dependency.injection.qualify;
 
 import org.geekbang.thinking.in.spring.ioc.dependency.injection.annotation.UserGroup;
 import org.geekbang.thinking.in.spring.ioc.overview.domain.User;
@@ -62,30 +62,29 @@ public class QualifierAnnotationDependencyInjectionDemo {
 
     @Bean
     @Qualifier // 进行逻辑分组
-    public User user1() {
+    public  User user1() {
         return createUser(7L);
     }
 
     @Bean
     @Qualifier // 进行逻辑分组
-    public static User user2() {
+    public  User user2() {
         return createUser(8L);
-
     }
 
     @Bean
     @UserGroup
-    public static User user3() {
+    public  User user3() {
         return createUser(9L);
     }
 
     @Bean
     @UserGroup
-    public static User user4() {
+    public  User user4() {
         return createUser(10L);
     }
 
-    private static User createUser(Long id) {
+    private  User createUser(Long id) {
         User user = new User();
         user.setId(id);
         return user;
@@ -99,7 +98,6 @@ public class QualifierAnnotationDependencyInjectionDemo {
         applicationContext.register(QualifierAnnotationDependencyInjectionDemo.class);
 
         XmlBeanDefinitionReader beanDefinitionReader = new XmlBeanDefinitionReader(applicationContext);
-
         String xmlResourcePath = "classpath:/META-INF/dependency-lookup-context.xml";
         // 加载 XML 资源，解析并且生成 BeanDefinition
         beanDefinitionReader.loadBeanDefinitions(xmlResourcePath);
@@ -120,7 +118,6 @@ public class QualifierAnnotationDependencyInjectionDemo {
         System.out.println("demo.qualifiedUsers = " + demo.qualifiedUsers);
         // 期待输出 user3 user4
         System.out.println("demo.groupedUsers = " + demo.groupedUsers);
-
 
         // 显示地关闭 Spring 应用上下文
         applicationContext.close();

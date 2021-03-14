@@ -14,8 +14,8 @@
 
     <properties>
         <!--   spring-webflux在spring5.0以后出现-->
-          <spring.version>4.3.26.RELEASE</spring.version>
-<!--        <spring.version>5.2.2.RELEASE</spring.version>-->
+<!--          <spring.version>4.3.26.RELEASE</spring.version>-->
+        <spring.version>5.2.2.RELEASE</spring.version>
     </properties>
 
 </project>

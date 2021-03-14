@@ -672,11 +672,18 @@ public UserHolder userHolder(User user) {
     • 自定义注解 - 如 Spring Cloud @LoadBalanced
 
 14. 延迟依赖注入
+• 使用 API ObjectFactory 延迟注入
+    • 单一类型 
+    • 集合类型
+• 使用 API ObjectProvider 延迟注入（推荐:减少或避免一些相关的异常）
+    • 单一类型
+    • 集合类型
     
-
 15. 依赖处理过程
+    • 入口 - DefaultListableBeanFactory#resolveDependency
+    • 依赖描述符 - DependencyDescriptor
+    • 自定绑定候选对象处理器 - AutowireCandidateResolver
     
-
 16. @Autowired 注入原理
     
 

@@ -35,7 +35,7 @@
     </modules>
 
     <properties>
-        <spring.version>5.2.2.RELEASE</spring.version>
+        <spring.version>5.2.5.RELEASE</spring.version>
         <lombok.version>1.18.16</lombok.version>
     </properties>
 
@@ -105,14 +105,6 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-        </dependency>
-
-        <!--热部署-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <optional>true</optional>
-            <scope>runtime</scope>
         </dependency>
 
     </dependencies>
